@@ -8,13 +8,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env: 
+      working-dir: ./sample-packages/npm/
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
       - run: npm ci
+        working-directory : ${{ env.working-dir }}
       - run: npm test
+        working-directory : ${{ env.working-dir }}
 
   publish-gpr:
     needs: build
@@ -26,6 +30,8 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
+        working-directory : ${{ env.working-dir }}
       - run: npm publish
+        working-directory : ${{ env.working-dir }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
