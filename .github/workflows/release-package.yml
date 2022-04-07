@@ -20,6 +20,7 @@ jobs:
         working-directory : ${{ env.working-dir }}
 
   publish-gpr:
+    name: Publish to Github packages
     needs: build
     runs-on: ubuntu-latest
     env: 
