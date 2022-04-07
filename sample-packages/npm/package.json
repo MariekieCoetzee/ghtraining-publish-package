@@ -1,3 +1,4 @@
 {
-  "your": "json config here"
+  "name": "json config here",
+  "version": "1.0.0"
 }
