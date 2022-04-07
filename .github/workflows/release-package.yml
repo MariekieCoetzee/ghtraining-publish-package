@@ -22,6 +22,8 @@ jobs:
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
+    env: 
+      working-dir: ./sample-packages/npm/
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
