@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: '@MariekieCoetzee'
+          scope: '@mariekie'
       - run: npm install
         working-directory : ${{ env.working-dir }}
       - run: npm publish
