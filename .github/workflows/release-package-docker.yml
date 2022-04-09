@@ -1,0 +1,34 @@
+name: publish docker image to GH package
+
+on: 
+  push:
+    branches: 
+      - docker
+        
+env:
+    REGISTRY: ghcr.io
+    IMAGE_NAME: ghtraining-docker-package
+    WORK_DIR: sample-packages/docker
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+      
+    steps: 
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        
+      - name: Loginto registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+        
+      - name: build image
+        working-directory: ${{env.WORK_DIR}}
+        run: docker build -t ghcr.io/mariekiecoetzee/ghtraining-docker-package:latest . 
+        
+      - name: push latest docker image
+        working-directory: ${{env.WORK_DIR}}
+        run: docker push ghcr.io/mariekiecoetzee/ghtraining-docker-package:latest 
