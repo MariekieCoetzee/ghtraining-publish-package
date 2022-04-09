@@ -8,6 +8,7 @@ on:
 env:
     REGISTRY: ghcr.io
     IMAGE_NAME: ghtraining-docker-package
+    WORK_DIR: /sample-packages/docker
 
 jobs:
   build:
@@ -24,7 +25,9 @@ jobs:
         run: echo ${{secrets.GITHUB_TOKEN}} | docker login ghcr.io -u mariekiecoetzee --password-stdin   
         
       - name: build image
+        working-directory: ${{env.WORK_DIR}}
         run: docker build -t ghcr.io/mariekiecoetzee/ghtraining-docker-package:latest . 
         
       - name: push latest docker image
+        working-directory: ${{env.WORK_DIR}}
         run: docker push ghcr.io/mariekiecoetzee/ghtraining-docker-package:latest 
