@@ -32,7 +32,7 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@mariekie'
-      - run: npm install
+      - run: npm install npm -g
         working-directory : ${{ env.working-dir }}
       - run: npm publish --access --force
         working-directory : ${{ env.working-dir }}
