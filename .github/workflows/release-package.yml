@@ -34,7 +34,7 @@ jobs:
           scope: '@mariekie'
       - run: npm install
         working-directory : ${{ env.working-dir }}
-      - run: npm publish --access
+      - run: npm publish --access --force
         working-directory : ${{ env.working-dir }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
