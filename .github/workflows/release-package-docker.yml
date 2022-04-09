@@ -1,0 +1,10 @@
+name: publish docker image to GH package
+
+on: 
+  push:
+    branches: 
+      - docker
+
+runs:
+  using:'docker'
+  image:'Dockerfile'

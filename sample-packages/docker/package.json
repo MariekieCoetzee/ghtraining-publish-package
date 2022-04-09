@@ -1,0 +1,16 @@
+{
+  "name": "mc_gh_sample",
+  "version": "1.0.0",
+  "description": "github training",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MariekieCoetzee/ghtraining-publish-package.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MariekieCoetzee/ghtraining-publish-package/issues"
+  },
+  "homepage": "https://github.com/MariekieCoetzee/ghtraining-publish-package#readme"
+}
