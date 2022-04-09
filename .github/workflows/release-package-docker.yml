@@ -4,7 +4,27 @@ on:
   push:
     branches: 
       - docker
+        
+env:
+    REGISTRY: ghcr.io
+    IMAGE_NAME: ghtraining-docker-package
 
-runs:
-  using:'docker'
-  image:'Dockerfile'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: read
+      packages: write
+      
+    steps: 
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        
+      - name: Loginto registry ${{ env.REGISTRY }}
+        run: echo ${{secrets.GITHUB_TOKEN}} | docker login ghcr.io -u mariekiecoetzee --password-stdin   
+        
+      - name: build image
+        run: docker build -t ghcr.io/mariekiecoetzee/ghtraining-docker-package:latest . 
+        
+      - name: push latest docker image
+        run: docker push ghcr.io/mariekiecoetzee/ghtraining-docker-package:latest 
