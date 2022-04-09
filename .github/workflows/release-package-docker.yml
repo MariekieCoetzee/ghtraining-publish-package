@@ -3,7 +3,7 @@ name: publish docker image to GH package
 on: 
   push:
     branches: 
-      - docker
+      - main
         
 env:
     REGISTRY: ghcr.io
