@@ -13,9 +13,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions: 
-      contents: write
-      packages: write
       
     steps: 
       - name: Checkout repo
